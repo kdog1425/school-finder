@@ -2,11 +2,15 @@
   "name": "kdog1425",
   "version": "1.0.0",
   "description": "school finder",
-  "main": "",
+  "main": "gulpfile.js",
   "scripts": {
+    "start": "./server/server.js"
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://github.com/kdog1425/school-finder.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdog1425/school-finder.git"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -23,5 +27,10 @@
     "reactify": "^1.1.1",
     "underscore": "^1.8.3",
     "vinyl-source-stream": "^1.1.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/kdog1425/school-finder/issues"
+  },
+  "homepage": "https://github.com/kdog1425/school-finder#readme",
+  "devDependencies": {}
 }
