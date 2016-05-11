@@ -12,8 +12,9 @@ app.use(express.static(path.join(__dirname, "../app/dist")));
 app.use(bodyParser.json())
 app.use("/api", schoolController);
 
-app.listen(7777, function () {
-    console.log("Started listening on port", 7777);
+var port = process.env.PORT || 12810;
+app.listen(port, function () {
+    console.log("Started listening on port", port);
 });
 
 // Connect to mongodb database
