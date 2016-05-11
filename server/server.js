@@ -17,4 +17,6 @@ app.listen(7777, function () {
 });
 
 // Connect to mongodb database
-mongoose.connect("mongodb://localhost/schoolfinder");
+var debug = false;
+var mongodb_uri = debug ? "mongodb://localhost/schoolfinder" : process.env.MONGODB_URI;
+mongoose.connect(mongodb_uri);
