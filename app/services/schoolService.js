@@ -1,6 +1,6 @@
 var $ = require("jquery");
 var promise = require("es6-promise");
-var resourceUrl = "http://localhost:7777/api/schools";
+var resourceUrl = mongodb_uri + "/api/schools";
 
 module.exports = {
     addSchool: function (school) {
