@@ -6,16 +6,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": "https://github.com/kdog1425/school-finder.git",
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "browserify": "^13.0.1",
+    "es6-promise": "^3.1.2",
     "express": "^4.13.4",
     "guid": "0.0.12",
     "gulp": "^3.9.1",
+    "jquery": "^2.2.3",
+    "mongoose": "^4.4.16",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "reactify": "^1.1.1",
+    "underscore": "^1.8.3",
     "vinyl-source-stream": "^1.1.0"
   }
 }
