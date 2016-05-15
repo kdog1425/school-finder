@@ -2,8 +2,8 @@ var mongoose = require("mongoose");
 var School = require("../data/school");
 var _ = require("underscore");
 
-var router = require("express").Router();
-router.route("/schools/:id?").get(getSchools).post(addSchool).delete(deleteSchool);
+var schoolRoutes = require("express").Router();
+schoolRoutes.route("/schools/:id?").get(getSchools).post(addSchool).delete(deleteSchool);
 
 function getSchools(req, res) {
     School.find(function (err, schools) {
@@ -34,4 +34,4 @@ function deleteSchool(req, res) {
     });
 }
 
-module.exports = router;
+module.exports = schoolRoutes;

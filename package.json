@@ -26,7 +26,14 @@
     "react-dom": "^15.0.2",
     "reactify": "^1.1.1",
     "underscore": "^1.8.3",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "bcrypt": "^0.8.5",
+    "jwt-simple": "^0.3.1",
+    "mongoose": "~4.2.4",
+    "morgan": "~1.5.0",
+    "passport": "^0.3.0",
+    "passport-jwt": "^1.2.1",
+    "bootstrap-css": "^3.3.6"
   },
   "bugs": {
     "url": "https://github.com/kdog1425/school-finder/issues"
