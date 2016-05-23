@@ -14,7 +14,14 @@ gulp.task("bundle", function () {
 });
 
 gulp.task("copy", ["bundle"], function () {
-    return gulp.src(["app/index.html","app/lib/bootstrap-css/css/bootstrap.min.css","app/style.css"])
+    return gulp.src([
+        "app/index.html",
+        "app/lib/bootstrap-css/css/bootstrap.min.css",
+        "app/style.css",
+        "app/lib/mp3/hum-1.mp3",
+        "app/lib/mp3/hum-2.mp3",
+        "app/lib/mp3/hum-3.mp3",
+        ])
         .pipe(gulp.dest("app/dist"));
 });
 

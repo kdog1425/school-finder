@@ -1,7 +1,8 @@
 var mongoose = require("mongoose");
 var schoolSchema = mongoose.Schema({
     name: String,
-    tagline: String
+    tagline: String,
+    themesongUrl: String
 });
 
 module.exports = mongoose.model("school", schoolSchema);

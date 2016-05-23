@@ -29,7 +29,9 @@ loginStore.onChange(submitLoginCredentialsCallback);
 function renderLogin(){
 	ReactDOM.render(<Center><Login loginSuccessCallback={initSchoolsView}/></Center>, document.getElementById("container"));    
 }
-renderLogin();
+//renderLogin();
+initSchoolsView();
+
 
 
 

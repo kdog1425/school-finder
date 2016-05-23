@@ -91,10 +91,6 @@ input[type="submit"] {
   font-size: 14px;
 }
 
-#login-form label {
-  color: #ddd;
-}
-
 #login-form input[type="email"],
 #login-form input[type="password"] {
   border: 1px solid #dcdcdc;

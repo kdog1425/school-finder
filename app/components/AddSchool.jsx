@@ -5,7 +5,8 @@ module.exports = React.createClass({
     getInitialState:function(){
       return {
           name:"",
-          tagline:""
+          tagline:"",
+          themesongUrl:""
       }  
     },
     addSchool:function(e){
@@ -29,6 +30,10 @@ module.exports = React.createClass({
                 <div className="form-group">
                     <label className="control-label" htmlFor="tagline">Tagline:</label>
                     <input type="text" className="form-control" id="tagline" name="tagline" value={this.state.address} onChange={this.handleInputChange} placeholder="Tagline" />                    
+                </div>
+                <div className="form-group">
+                    <label className="control-label" htmlFor="tagline">Theme Song:</label>
+                    <input type="text" className="form-control" id="themesongUrl" name="themesongUrl" value={this.state.themesongUrl} onChange={this.handleInputChange} placeholder="Theme Song" />                    
                 </div>
                 <div className="form-group">
                     <button className="btn" type="submit">Add School</button>

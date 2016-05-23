@@ -1,5 +1,6 @@
 var React = require("react");
 var actions = require("../actions/SchoolActions");
+var Center = require('react-center');
 
 module.exports = React.createClass({
     deleteSchool: function(e){
@@ -13,7 +14,10 @@ module.exports = React.createClass({
                     {this.props.info.name}
                     <span className="pull-right text-uppercase delete-button" onClick={this.deleteSchool}>&times;</span>
                 </div>
-                <div className="panel-body">{this.props.info.tagline}</div>
+                    <div className="panel-body">{this.props.info.tagline}</div>
+                    <Center>
+                        <audio src={this.props.info.themesongUrl} controls preload="auto"></audio>
+                    </Center>
             </div>
         )
     }
