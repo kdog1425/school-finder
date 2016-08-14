@@ -35,7 +35,7 @@ function processFile(path, sessionID){
     var options = {
       mode: 'text',
       pythonOptions: ['-u'],
-      scriptPath: '/Users/chenprice/Github/qualm/server/FeatureExtraction/main',
+      scriptPath: '../FeatureExtraction/main',
       args: [path]
     };
      

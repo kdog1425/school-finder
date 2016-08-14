@@ -22,8 +22,6 @@ app.use(express.static(path.join(__dirname, "../app/dist")));
 app.use(bodyParser.json());
 app.use("/", audioUploadController);
 
-DEBUG = false;
-
 // log to console
 app.use(morgan('dev'));
 var server = require('http').createServer(app);  
@@ -63,6 +61,7 @@ io.sockets.on('connection', function(socket) {
 });
 
 // set the right port
+DEBUG = false;
 var port = process.env.PORT || 12810;
 if (DEBUG){
   port = 7777;
