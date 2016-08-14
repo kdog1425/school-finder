@@ -1,44 +1,80 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var morgan      = require('morgan');
-var mongoose = require("mongoose");
-var passport	= require('passport');
 var path = require("path");
-var DEBUG = true;
+var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
+var session = require('express-session')
 
+//controllers
+var audioUploadController = require("./controllers/audioUploadController");
 
 //Express request pipeline
 var app = express();
-// Use the passport package in our application
-app.use(passport.initialize());
-
-// pass passport for configuration
-require('../config/passport')(passport);
-
-app.use(express.static(path.join(__dirname, "../app/dist")));
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-  extended: true
+app.use(cookieParser());
+app.use(session({
+    secret: 'longasssecretcodehashtagpassword35', // just a long random string
+    resave: false,
+    saveUninitialized: true,
+    key: 'express.sid'
 }));
 
-//controllers
-var schoolController = require("./controllers/schoolController");
-var authenticationController = require("./controllers/authenticationController");
-app.use("/api", schoolController);
-app.use("/api", authenticationController);
+app.use(express.static(path.join(__dirname, "../app/dist")));
+app.use(bodyParser.json());
+app.use("/", audioUploadController);
+
+DEBUG = true;
 
 // log to console
 app.use(morgan('dev'));
 
-// Connect to mongodb database
-var mongodb_uri = DEBUG ? "mongodb://localhost/schoolfinder" : process.env.MONGODB_URI;
-mongoose.connect(mongodb_uri);
-
 // set the right port
 var port = process.env.PORT || 12810;
 if (DEBUG){
-	port = 3000;
+	port = 7777;
 }
-app.listen(port, function () {
+
+var server = require('http').createServer(app);  
+io = require('socket.io')(server);
+
+// Event fired every time a new client connects:
+//----set sessionID
+var cookie = require("cookie");
+io.use(function(socket, next) {
+  var data = socket.request;
+	  //check if there's a cookie header
+	    if (data.headers.cookie) {
+	        // session id, as you specified in the Express setup.
+	        data['sessionID'] = cookie.parse(data.headers["cookie"])["express.sid"];
+	    } else {
+	       // if there isn't, turn down the connection with a message
+	       // and leave the function.
+	       return accept('No cookie transmitted.', false);
+	    }
+  // make sure the handshake data looks good as before
+  // if error do this:
+    // next(new Error('not authorized');
+  // else just call next
+  next();
+});
+
+clients = {}
+
+io.sockets.on('connection', function(socket) {
+  var data = socket.handshake;
+  var sessionID = cookie.parse(data.headers["cookie"])["express.sid"];
+  console.log('adding sessionID', sessionID);
+  var dot = sessionID.indexOf('.');
+  var trimmed = sessionID.substring(2, dot);
+  clients[trimmed] = socket;
+  socket.join(sessionID);
+});
+
+server.listen(7777, function () {
     console.log("Started listening on port", port);
 });
+
+module.exports = io;
+
+// app.listen(port, function () {
+//     console.log("Started listening on port", port);
+// });
