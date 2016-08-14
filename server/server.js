@@ -26,13 +26,6 @@ DEBUG = false;
 
 // log to console
 app.use(morgan('dev'));
-
-// set the right port
-var port = process.env.PORT || 12810;
-if (DEBUG){
-	port = 7777;
-}
-
 var server = require('http').createServer(app);  
 io = require('socket.io')(server);
 
@@ -69,7 +62,13 @@ io.sockets.on('connection', function(socket) {
   socket.join(sessionID);
 });
 
-server.listen(7777, function () {
+// set the right port
+var port = process.env.PORT || 12810;
+if (DEBUG){
+  port = 7777;
+}
+
+server.listen(port, function () {
     console.log("Started listening on port", port);
 });
 
