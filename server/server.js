@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "../app/dist")));
 app.use(bodyParser.json());
 app.use("/", audioUploadController);
 
-DEBUG = true;
+DEBUG = false;
 
 // log to console
 app.use(morgan('dev'));
