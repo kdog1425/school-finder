@@ -35,7 +35,7 @@ function processFile(path, sessionID){
     var options = {
       mode: 'text',
       pythonOptions: ['-u'],
-      scriptPath: '../FeatureExtraction/main',
+      scriptPath: 'server/FeatureExtraction/main',
       args: [path]
     };
      
